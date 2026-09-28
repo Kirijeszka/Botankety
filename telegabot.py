@@ -8,9 +8,10 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 with open(r"C:\Users\ktara\OneDrive\Desktop\Botik\token.txt", "r", encoding="utf-8") as f:
-    lines = [line.strip() for line in f.readlines() if line.strip()]
-    TOKEN = lines[0]
-    ADMIN_ID = int(lines[1])
+  import os
+
+TOKEN = os.environ.get("TOKEN")
+ADMIN_ID = int(os.environ.get("ADMIN_ID"))
 
 logging.basicConfig(level=logging.INFO)
 router = Router()
