@@ -34,8 +34,8 @@ router = Router()
 async def callback_contact(callback: CallbackQuery): 
   parts = callback.data.split("_") 
   user_id = parts[1] 
-await callback.message.answer(f"💬 Контакт для связи с игроком:\nID: {user_id}\nСсылка: tg://user?id={user_id}") 
-await callback.answer("Контакт отправлен в чат!")
+  await callback.message.answer(f"💬 Контакт для связи с игроком:\nID: {user_id}\nСсылка: tg://user?id={user_id}") 
+  await callback.answer("Контакт отправлен в чат!")
 
 @router.callback_query(F.data.startswith("accept_")) 
 async def callback_accept(callback: CallbackQuery, state: FSMContext): 
