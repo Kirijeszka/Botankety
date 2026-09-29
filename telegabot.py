@@ -45,15 +45,15 @@ async def callback_accept(callback: CallbackQuery, state: FSMContext):
   await callback.message.answer("🔗 Отправь следующим сообщением ссылку на Discord, и я перешлю её игроку вместе с поздравлением.") 
   await callback.answer()
   
-  @router.message(AdminState.waiting_for_invite) 
-  async def send_invite_link(message: Message, state: FSMContext):
-    data = await state.get_data()
-    user_id = data.get("target_user_id")
-    invite_link = message.text 
-    add_user_to_file(user_id, ACCEPTED_FILE) 
-    await message.bot.send_message( 
-      user_id, 
-      f"🎉 Поздравляем! Ваша анкета принята.\nВот ссылка на наш Discord-сервер: {invite_link}"
+@router.message(AdminState.waiting_for_invite) 
+async def send_invite_link(message: Message, state: FSMContext):
+  data = await state.get_data()
+  user_id = data.get("target_user_id")
+  invite_link = message.text 
+  add_user_to_file(user_id, ACCEPTED_FILE) 
+  await message.bot.send_message( 
+    user_id, 
+    f"🎉 Поздравляем! Ваша анкета принята.\nВот ссылка на наш Discord-сервер: {invite_link}"
     )
     await message.answer("✅ Ссылка успешно отправлена игроку!") 
     await state.clear()
