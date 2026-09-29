@@ -31,7 +31,8 @@ def run_dummy_server():
 router = Router()
 
 @router.callback_query(F.data.startswith("contact_")) 
-async def callback_contact(callback: CallbackQuery): parts = callback.data.split("_") 
+async def callback_contact(callback: CallbackQuery): 
+  parts = callback.data.split("_") 
   user_id = parts[1] 
 await callback.message.answer(f"💬 Контакт для связи с игроком:\nID: {user_id}\nСсылка: tg://user?id={user_id}") 
 await callback.answer("Контакт отправлен в чат!")
