@@ -55,8 +55,8 @@ async def send_invite_link(message: Message, state: FSMContext):
     user_id, 
     f"🎉 Поздравляем! Ваша анкета принята.\nВот ссылка на наш Discord-сервер: {invite_link}"
     )
-    await message.answer("✅ Ссылка успешно отправлена игроку!") 
-    await state.clear()
+  await message.answer("✅ Ссылка успешно отправлена игроку!") 
+  await state.clear()
 async def main(): 
   global bot 
   bot = Bot(token=TOKEN) 
